@@ -17,8 +17,22 @@ public class Main {
         System.out.println(monster);
 
         saveObject(monster);
-        loadObject(monster);
+        //loadObject(monster);
         System.out.println(monster);
+
+
+        ISaveable zombie = new Zombie("Wilma", 60, "Hammer");
+        System.out.println(zombie.toString());
+        saveObject(zombie);
+
+        System.out.println("\nStrength = " + ((Zombie)zombie).getStrength());
+
+        ((Zombie) zombie).setWeapon("Nail Bar");
+        System.out.println(zombie);
+
+        saveObject(zombie);
+        loadObject(zombie);
+        System.out.println(zombie);
 
         }
 
@@ -55,7 +69,7 @@ public class Main {
 
     public static void saveObject(ISaveable objectToSave) {
         for(int i = 0; i < objectToSave.write().size(); i++){
-            System.out.println("Saving " + objectToSave.write().get(i) + " to storage device\n***");
+            System.out.println("\nSaving " + objectToSave.write().get(i) + " to storage device\n***");
         }
     }
 

@@ -4,16 +4,16 @@ import java.util.List;
 /**
  * Created	by Vinny Tsoi on 06/01/2019
  */
-public class Monster implements ISaveable {
+public class Zombie implements ISaveable {
 
     private String name;
     private int strength;
-    private boolean isGood;
+    private String weapon;
 
-    public Monster(String name, int strength, boolean isGood) {
+    public Zombie(String name, int strength, String weapon) {
         this.name = name;
         this.strength = strength;
-        this.isGood = isGood;
+        this.weapon = weapon;
     }
 
     public String getName() {
@@ -32,20 +32,20 @@ public class Monster implements ISaveable {
         this.strength = strength;
     }
 
-    public boolean isGood() {
-        return isGood;
+    public String getWeapon() {
+        return weapon;
     }
 
-    public void setGood(boolean good) {
-        isGood = good;
+    public void setWeapon(String weapon) {
+        this.weapon = weapon;
     }
 
     @Override
     public String toString() {
-        return "\nMonster{" +
+        return "\nZombie{" +
                 "name='" + name + '\'' +
                 ", strength='" + strength + '\'' +
-                ", isGood=" + isGood +
+                ", weapon=" + weapon +
                 '}';
     }
 
@@ -55,11 +55,8 @@ public class Monster implements ISaveable {
 
         values.add(0, this.name);
         values.add(1, "" + this.strength);
-        if(isGood){
-            values.add(2, "Is Good");
-        } else {
-            values.add(2, "Is Bad");
-        }
+        values.add(2, this.weapon);
+
 
         return values;
     }
@@ -69,20 +66,10 @@ public class Monster implements ISaveable {
         if(savedValues != null && savedValues.size() > 0){
             this.name = savedValues.get(0);
             this.strength = Integer.parseInt(savedValues.get(1));
-            if (savedValues.get(2).equalsIgnoreCase("true")){
-                this.isGood = true;
-            } else {
-                this.isGood = false;
-            }
+            this.weapon = savedValues.get(2);
+
         }
     }
-
-
-
-
-
-
-
 
 
 } //class
